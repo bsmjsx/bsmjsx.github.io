@@ -40,7 +40,6 @@ function next() {
 		  window.location.href = "thank.html";
       })
       .catch((error) => {
-        alert('Failed to send message.');
       });
 }
 
